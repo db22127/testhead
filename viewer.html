@@ -9,9 +9,11 @@
 </style>
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+
+<!-- three.js r150 (OrbitControls が使える最後の安定版) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.0/examples/js/controls/OrbitControls.js"></script>
 
 <script>
   const scene = new THREE.Scene();
@@ -21,7 +23,7 @@
   renderer.setPixelRatio(window.devicePixelRatio);
   document.body.appendChild(renderer.domElement);
 
-  // Light (FIXED)
+  // Light
   const hemiLight = new THREE.HemisphereLight(0xffffff, 0x333333, 1.2);
   scene.add(hemiLight);
 
@@ -38,11 +40,11 @@
       console.log("GLB loaded");
   });
 
-  const animate = () => {
+  function animate() {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
       controls.update();
-  };
+  }
   animate();
 
   window.addEventListener("resize", () => {
